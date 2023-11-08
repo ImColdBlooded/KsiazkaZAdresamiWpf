@@ -62,7 +62,9 @@ namespace KsiazkaZAdresami
                     Database.DeleteData(selected);
 
                     addres = new ObservableCollection<AddressData>(Database.ReadData());
-                    listaAdresow.ItemsSource = addres;
+                    int startIndex = 0;
+                    var pageData = addres.Skip(startIndex).Take(itemsPerPage).ToList();
+                    listaAdresow.ItemsSource = pageData;
                 }
                 else
                 {
